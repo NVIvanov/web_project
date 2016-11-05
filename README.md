@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/NVIvanov/web_project/blob/master/LICENSE.txt">
+  <a href="https://github.com/NVIvanov/web_project/blob/master/LICENSE">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/>
 	</a>
 </p>
