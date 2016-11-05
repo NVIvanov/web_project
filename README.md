@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/NVIvanov/web_project/blob/master/MIT-LICENSE.txt">
+		<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/>
+	</a>
+</p>
+
 # web_project
 
 Читай [гайд](CONTRIBUTORS.md)
