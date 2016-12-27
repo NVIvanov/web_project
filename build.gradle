@@ -3,43 +3,28 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
-        classpath group: 'org.yaml', name: 'snakeyaml', version: '1.8'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
+group 'ru.mephi'
+version '1.0-SNAPSHOT'
 
-jar {
-    baseName = 'web_project'
-    version =  '0.1.0'
-}
-
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-    }
-}
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
 
 repositories {
     mavenCentral()
-    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 dependencies {
-    compile group: 'org.yaml', name: 'snakeyaml', version: '1.8'
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-devtools")
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.thymeleaf:thymeleaf-spring4")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile("org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41'
     compile("com.h2database:h2")
-
-    testCompile("junit:junit")
+    testCompile group: 'junit', name: 'junit', version: '4.11'
 }
