@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Drag-and-drop test</title>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/drag-and-drop.js"></script>
+    <style>
+        .vertical-center {
+            position: inherit;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <section id="toolbar" class="row show-grid container center-block">
+        <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
+                ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
+                class="col-lg-2 text-center h3 vertical-center" data-type="button">
+            Кнопка
+        </section>
+        <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
+                ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
+                class="col-lg-3 text-center h3 vertical-center" data-type="image">
+            Изображение
+        </section>
+        <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
+                ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
+                class="col-lg-3 text-center h3 vertical-center" data-type="panel">
+            Панель
+        </section>
+        <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
+                ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
+                class="col-lg-2 text-center h3 vertical-center" data-type="text">
+            Текст
+        </section>
+        <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
+                ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
+                class="col-lg-2 text-center h3 vertical-center" data-type="text_field">
+            Поле ввода
+        </section>
+    </section>
+    <section id="editor" class="center-block" style="border: 1px dashed;width: 80%; height: 500px"
+             ondragstart="handleDragStart(event)" ondrag="handleDrag(event)" ondrop="handleDrop(event)"
+             ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"></section>
+</body>
+</html>
