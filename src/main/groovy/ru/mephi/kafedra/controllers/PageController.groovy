@@ -24,7 +24,7 @@ class PageController {
     @Autowired
     ComponentService componentService
 
-    @GetMapping("/")
+    @GetMapping
     String getView(@PathVariable String path, Model model) {
         List<SitePageDTO> pageDTOs = pageService.getPage(path)
         if (pageDTOs.size() > 0)

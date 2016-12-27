@@ -36,6 +36,8 @@ class SiteServiceImpl implements SiteService {
         site.owner = userRepository.findByUsername(dto.owner).orElseThrow {
             throw new IllegalStateException()
         }
+        site.relativePath = dto.relativePath
+        siteRepository.save(site)
     }
 
     @Override
