@@ -26,15 +26,19 @@ class PageController {
 
     @GetMapping("/")
     String getView(@PathVariable String path, Model model) {
-        model.addAttribute("component", componentService
-                .getComponents(pageService.getPage(path).get(0)))
+        List<SitePageDTO> pageDTOs = pageService.getPage(path)
+        if (pageDTOs.size() > 0)
+            model.addAttribute("component", componentService
+                    .getComponents(pageDTOs.get(0)))
         return "view"
     }
 
     @GetMapping("/edit")
     String getEditView(@PathVariable String path, Model model) {
-        model.addAttribute("component", componentService
-                .getComponents(pageService.getPage(path).get(0)))
+        List<SitePageDTO> pageDTOs = pageService.getPage(path)
+        if (pageDTOs.size() > 0)
+            model.addAttribute("component", componentService
+                    .getComponents(pageDTOs.get(0)))
         return "edit"
     }
 
