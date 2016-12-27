@@ -5,7 +5,7 @@ package ru.mephi.kafedra.dto
  * on 27.12.16.
  */
 class SitePageDTO {
-    Long parent
+    Long id, parent
     String relativePath
     Set<Long> children
 }

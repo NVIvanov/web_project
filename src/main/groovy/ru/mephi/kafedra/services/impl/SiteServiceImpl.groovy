@@ -47,6 +47,7 @@ class SiteServiceImpl implements SiteService {
             dto.relativePath = model.relativePath
             dto.mainPage = model.mainPage.relativePath
             dto.owner = model.owner.username
+            dto.id = model.id
             return dto
         }
     }
