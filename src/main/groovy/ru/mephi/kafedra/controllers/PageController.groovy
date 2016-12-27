@@ -25,14 +25,17 @@ class PageController {
     ComponentService componentService
 
     @GetMapping("/")
-    String getView(@PathVariable String path) {
-        pageService.getPage(path).get(0)
+    String getView(@PathVariable String path, Model model) {
+        model.addAttribute("component", componentService
+                .getComponents(pageService.getPage(path).get(0)))
+        return "view"
     }
 
     @GetMapping("/edit")
     String getEditView(@PathVariable String path, Model model) {
         model.addAttribute("component", componentService
                 .getComponents(pageService.getPage(path).get(0)))
+        return "edit"
     }
 
     @GetMapping(value = "/get", produces = "application/json")
