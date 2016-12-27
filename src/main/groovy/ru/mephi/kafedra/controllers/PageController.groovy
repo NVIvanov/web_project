@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import ru.mephi.kafedra.dto.SitePageDTO
 import ru.mephi.kafedra.services.ComponentService
 import ru.mephi.kafedra.services.PageService
 
@@ -32,5 +33,10 @@ class PageController {
     String getEditView(@PathVariable String path, Model model) {
         model.addAttribute("component", componentService
                 .getComponents(pageService.getPage(path).get(0)))
+    }
+
+    @GetMapping(value = "/get", produces = "application/json")
+    SitePageDTO getInfo(@PathVariable String path) {
+        return pageService.getPage(path).get(0)
     }
 }
