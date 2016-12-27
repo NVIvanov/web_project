@@ -12,5 +12,6 @@ import ru.mephi.kafedra.data.entities.SitePage
 interface SitePageRepository extends CrudRepository<SitePage, Long> {
     Optional<SitePage> findByRelativePathAndParentPageRelativePath(String relativePath, String parentRelativePath)
 
+    Optional<SitePage> findByChildrenId(Long id)
     List<SitePage> findByRelativePath(String relativePath)
 }

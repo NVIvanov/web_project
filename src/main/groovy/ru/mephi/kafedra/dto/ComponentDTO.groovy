@@ -1,19 +1,18 @@
 package ru.mephi.kafedra.dto
-
-import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonManagedReference
-
 /**
  * @author nivanov
  * on 26.12.16.
  */
 class ComponentDTO {
-    String width, height, margin, padding, position, type, page
+    Long id, pageId
+    String width, height, margin, padding, position, type, text
     Map<String, String> jsEventListeners
-
-    @JsonManagedReference
     Set<ComponentDTO> children
+    String jsAction
+    String src
+    Integer borderRadius
+    Integer fontSize
+    String fontFamily, colorHex
+    Boolean isHref
 
-    @JsonBackReference
-    ComponentDTO parent
 }

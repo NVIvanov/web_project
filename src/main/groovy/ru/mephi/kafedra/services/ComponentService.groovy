@@ -1,13 +1,13 @@
 package ru.mephi.kafedra.services
 
-import ru.mephi.kafedra.dto.ButtonDTO
+import ru.mephi.kafedra.data.entities.components.Component
+import ru.mephi.kafedra.dto.ComponentDTO
 
 /**
  * @author nivanov
  * on 26.12.16.
  */
 interface ComponentService {
-    void createButton(ButtonDTO component)
-
+    Component createComponent(ComponentDTO component, Component parent)
     void removeComponent(Long id)
 }

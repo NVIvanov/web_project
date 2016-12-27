@@ -3,13 +3,13 @@ package ru.mephi.kafedra.data.entities.components
 import ru.mephi.kafedra.data.entities.SitePage
 
 import javax.persistence.*
+import javax.validation.constraints.NotNull
 
 /**
  * @author nivanov
  * on 26.12.16.
  */
 @Entity
-@Inheritance
 class Component {
 
     @Id
@@ -26,9 +26,19 @@ class Component {
     @JoinColumn(name = "component_id")
     Set<Component> children
 
+    @NotNull
     @ManyToOne
     SitePage page
 
     @ManyToOne
     Component parent
+
+    String jsAction
+    String src
+    Integer borderRadius
+    Integer fontSize
+    String fontFamily
+    String colorHex
+    Boolean isHref = false
+    String text
 }
