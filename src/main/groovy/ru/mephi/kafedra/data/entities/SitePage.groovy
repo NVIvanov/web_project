@@ -1,5 +1,7 @@
 package ru.mephi.kafedra.data.entities
 
+import ru.mephi.kafedra.data.entities.components.Component
+
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
@@ -23,5 +25,9 @@ class SitePage {
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "page_id")
     Set<SitePage> children
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "page_id")
+    Set<Component> components
 
 }

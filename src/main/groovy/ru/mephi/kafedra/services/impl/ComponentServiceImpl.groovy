@@ -9,7 +9,11 @@ import ru.mephi.kafedra.data.repositories.ComponentRepository
 import ru.mephi.kafedra.data.repositories.JsEventRepository
 import ru.mephi.kafedra.data.repositories.SitePageRepository
 import ru.mephi.kafedra.dto.ComponentDTO
+import ru.mephi.kafedra.dto.SitePageDTO
 import ru.mephi.kafedra.services.ComponentService
+
+import java.util.function.Function
+import java.util.stream.Collectors
 
 /**
  * @author nivanov
@@ -33,8 +37,13 @@ class ComponentServiceImpl implements ComponentService {
         if (parent != null)
             component.page = parent.page
         else if (componentDTO.pageId != null)
-            sitePageRepository.findOne(componentDTO.pageId)
-        component.jsAction = componentDTO.jsAction
+            component.page = sitePageRepository.findOne(componentDTO.pageId)
+        def page = component.page
+        if (page.components == null)
+            page.components = new HashSet<>()
+        if (parent == null) {
+            page.components.add(component)
+        }
         component.borderRadius = componentDTO.borderRadius
         component.colorHex = componentDTO.colorHex
         component.fontFamily = componentDTO.fontFamily
@@ -73,12 +82,65 @@ class ComponentServiceImpl implements ComponentService {
             }
         }
         repository.save(component)
+        sitePageRepository.save(page)
         return component
     }
 
+    @Override
+    List<ComponentDTO> getComponents(SitePageDTO page) {
+        repository.findByPageRelativePathAndPageParentPageId(page.relativePath, page.parent)
+                .stream()
+                .map { model ->
+            convertComponent(model)
+        }.collect(Collectors.toList())
+    }
+
+    private ComponentDTO convertComponent(Component model) {
+        def dto = new ComponentDTO()
+        dto.id = model.id
+        dto.borderRadius = model.borderRadius
+        if (model.children != null)
+            dto.children = model.children.stream().map { child ->
+                convertComponent(child)
+            }.collect(Collectors.toList())
+        dto.colorHex = model.colorHex
+        dto.fontFamily = model.fontFamily
+        dto.fontSize = model.fontSize
+        dto.height = model.height
+        dto.width = model.width
+        dto.padding = model.padding
+        dto.margin = model.margin
+        dto.isHref = model.isHref
+        if (model.jsEventListeners != null)
+            dto.jsEventListeners = model.jsEventListeners.stream().collect(Collectors.toMap(new Function() {
+                @Override
+                Object apply(Object o) {
+                    return ((JsEventListener) o).event
+                }
+            }, new Function() {
+                @Override
+                Object apply(Object o) {
+                    return ((JsEventListener) o).js
+                }
+            }))
+        dto.position = model.position
+        dto.pageId = model.page.id
+        dto.src = model.src
+        dto.text = model.text
+        dto.type = model.type
+        return dto
+    }
 
     @Override
     void removeComponent(Long id) {
         repository.delete(id)
+    }
+
+    @Override
+    void removeComponentOnPage(Long id) {
+        def page = sitePageRepository.findOne(id)
+        if (page.components != null)
+            repository.delete(page.components)
+        sitePageRepository.save(page)
     }
 }

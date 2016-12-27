@@ -10,4 +10,5 @@ import ru.mephi.kafedra.data.entities.components.Component
  */
 @Repository
 interface ComponentRepository extends CrudRepository<Component, Long> {
+    Collection<Component> findByPageRelativePathAndPageParentPageId(String relativePath, Long parentId)
 }

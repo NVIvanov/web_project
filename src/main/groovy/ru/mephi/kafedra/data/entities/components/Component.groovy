@@ -33,7 +33,6 @@ class Component {
     @ManyToOne
     Component parent
 
-    String jsAction
     String src
     Integer borderRadius
     Integer fontSize

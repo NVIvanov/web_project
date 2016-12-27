@@ -7,6 +7,8 @@ import ru.mephi.kafedra.data.repositories.SitePageRepository
 import ru.mephi.kafedra.dto.SitePageDTO
 import ru.mephi.kafedra.services.PageService
 
+import java.util.stream.Collectors
+
 /**
  * @author nivanov
  * on 27.12.16.
@@ -31,5 +33,21 @@ class PageServiceImpl implements PageService {
         }
         pageRepository.save(page)
         return page
+    }
+
+    List<SitePageDTO> getPage(String relativePath) {
+        pageRepository.findByRelativePath(relativePath)
+                .stream()
+                .map { model ->
+            def dto = new SitePageDTO()
+            dto.relativePath = model.relativePath
+            if (model.children != null)
+                dto.children = model.children.stream().map { child ->
+                    return child.id
+                }.collect(Collectors.toList())
+            if (model.parentPage != null)
+                dto.parent = model.parentPage.id
+            return dto
+        }.collect(Collectors.toList())
     }
 }

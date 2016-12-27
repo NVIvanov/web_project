@@ -8,4 +8,6 @@ import ru.mephi.kafedra.dto.UserDTO
  */
 interface UserService {
     void createUser(UserDTO userDTO)
+
+    UserDTO getCurrentUser()
 }

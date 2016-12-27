@@ -28,4 +28,9 @@ class UserServiceImpl implements UserService {
         user.username = userDTO.username
         repository.save(user)
     }
+
+    @Override
+    UserDTO getCurrentUser() {
+        return null
+    }
 }

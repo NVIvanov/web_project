@@ -9,4 +9,6 @@ import ru.mephi.kafedra.dto.SitePageDTO
  */
 interface PageService {
     SitePage createPage(SitePageDTO dto)
+
+    List<SitePageDTO> getPage(String relativePath)
 }

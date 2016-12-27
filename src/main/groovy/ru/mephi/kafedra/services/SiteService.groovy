@@ -8,4 +8,6 @@ import ru.mephi.kafedra.dto.SiteDTO
  */
 interface SiteService {
     void createSite(SiteDTO dto)
+
+    Optional<SiteDTO> getSite(String relativePath)
 }

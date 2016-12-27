@@ -8,7 +8,6 @@ class ComponentDTO {
     String width, height, margin, padding, position, type, text
     Map<String, String> jsEventListeners
     Set<ComponentDTO> children
-    String jsAction
     String src
     Integer borderRadius
     Integer fontSize

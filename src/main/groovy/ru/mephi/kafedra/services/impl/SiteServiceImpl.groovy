@@ -37,4 +37,15 @@ class SiteServiceImpl implements SiteService {
             throw new IllegalStateException()
         }
     }
+
+    @Override
+    Optional<SiteDTO> getSite(String relativePath) {
+        return siteRepository.findByRelativePath(relativePath).map { model ->
+            def dto = new SiteDTO()
+            dto.relativePath = model.relativePath
+            dto.mainPage = model.mainPage.relativePath
+            dto.owner = model.owner.username
+            return dto
+        }
+    }
 }
