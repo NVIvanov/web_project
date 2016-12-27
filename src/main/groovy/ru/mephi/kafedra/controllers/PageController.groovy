@@ -44,6 +44,7 @@ class PageController {
 
     @GetMapping(value = "/get", produces = "application/json")
     SitePageDTO getInfo(@PathVariable String path) {
-        return pageService.getPage(path).get(0)
+        List<SitePageDTO> pageDTOs = pageService.getPage(path)
+        return pageDTOs.size() > 0 ? pageDTOs.get(0) : null
     }
 }
