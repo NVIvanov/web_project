@@ -9,7 +9,6 @@ function handleDragStart(event) {
 
 function handleDragStartInEditor(event) {
     event.stopPropagation();
-    console.log(event.currentTarget.nodeName);
     event.dataTransfer.setData('text/html', event.currentTarget.outerHTML);
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('id', event.currentTarget.getAttribute('id'));
@@ -76,11 +75,7 @@ function createNewComponent(type) {
                 'ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)" draggable="true" ' +
                 'style="border: dashed 1px" data-type="text" id="' + inc++ + '">Lorem ipsum dolor sit amet, ' +
                 'consectetur adipiscing elit. Fusce interdum semper metus tempus scelerisque. ' +
-                'Mauris ex nisi, facilisis nec ullamcorper eget, tempus interdum libero. Duis commodo ' +
-                'sapien nec rhoncus iaculis. Proin faucibus rhoncus augue vel pulvinar. ' +
-                'Aenean at justo sed diam rutrum efficitur. Nunc sed odio ac est laoreet ' +
-                'pretium eget eu nisi. Curabitur cursus erat diam, eget aliquam neque ' +
-                'aliquet et. Sed a tortor leo. Aenean auctor nisl eu eleifend tristique.</p>');
+                'Mauris ex nisi, facilisis nec ullamcorper eget, tempus interdum libero.</p>');
         case 'text_field':
             return $('<input ondragstart="handleDragStartInEditor(event)" ondrag="handleDrag(event)" ' +
                 'ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ' +
