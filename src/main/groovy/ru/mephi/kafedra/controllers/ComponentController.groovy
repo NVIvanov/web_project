@@ -22,8 +22,10 @@ class ComponentController {
     ComponentService componentService
 
     @PostMapping("/")
-    void createComponents(@RequestBody @Valid ComponentDTO componentDTO) {
-        componentService.removeComponentOnPage(componentDTO.pageId)
-        componentService.createComponent(componentDTO, null)
+    void createComponents(@RequestBody @Valid List<ComponentDTO> componentDTO) {
+        componentService.removeComponentOnPage(componentDTO.get(0).pageId)
+        for (ComponentDTO component : componentDTO) {
+            componentService.createComponent(component, null)
+        }
     }
 }
