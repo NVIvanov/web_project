@@ -124,7 +124,8 @@ class ComponentServiceImpl implements ComponentService {
                 }
             }))
         dto.position = model.position
-        dto.pageId = model.page.id
+        if (model.page != null)
+            dto.pageId = model.page.id
         dto.src = model.src
         dto.text = model.text
         dto.type = model.type
@@ -139,8 +140,10 @@ class ComponentServiceImpl implements ComponentService {
     @Override
     void removeComponentOnPage(Long id) {
         def page = sitePageRepository.findOne(id)
-        if (page.components != null)
-            repository.delete(page.components)
+        if (page.components != null) {
+            page.components.forEach { component -> repository.delete(component) }
+            page.components.clear()
+        }
         sitePageRepository.save(page)
     }
 }

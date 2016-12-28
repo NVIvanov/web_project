@@ -42,7 +42,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
         http.formLogin()
-                .loginPage("/")
+                .loginPage("/login")
                 .permitAll()
         http.logout()
                 .permitAll()

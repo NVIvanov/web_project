@@ -3,7 +3,6 @@ package ru.mephi.kafedra.data.entities.components
 import ru.mephi.kafedra.data.entities.SitePage
 
 import javax.persistence.*
-import javax.validation.constraints.NotNull
 
 /**
  * @author nivanov
@@ -26,7 +25,6 @@ class Component {
     @JoinColumn(name = "component_id")
     Set<Component> children
 
-    @NotNull
     @ManyToOne
     SitePage page
 
