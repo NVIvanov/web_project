@@ -12,6 +12,8 @@ import ru.mephi.kafedra.services.AttachmentService
 import ru.mephi.kafedra.services.StorageService
 import ru.mephi.kafedra.services.UserService
 
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.util.stream.Collectors
 
 /**
@@ -52,7 +54,12 @@ class AttachmentServiceImpl implements AttachmentService {
     }
 
     @Override
-    List<AttachmentDTO> getAttachmentsForCurrentUser() {
+    void createUserFolder() {
+        Files.createFile(Paths.get("upload-dir/" + userService.getCurrentUser().username))
+    }
+
+    @Override
+    List<AttachmentDTO> getForCurrentUser() {
         return attachmentRepository.findByUserUsername(userService.getCurrentUser().username)
                 .stream().map { model ->
             def dto = new AttachmentDTO()

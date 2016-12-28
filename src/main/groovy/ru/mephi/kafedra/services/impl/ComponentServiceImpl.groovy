@@ -34,14 +34,12 @@ class ComponentServiceImpl implements ComponentService {
     @Override
     Component createComponent(ComponentDTO componentDTO, Component parent) {
         def component = new Component()
-        if (parent != null)
-            component.page = parent.page
-        else if (componentDTO.pageId != null)
+        if (componentDTO.pageId != null)
             component.page = sitePageRepository.findOne(componentDTO.pageId)
         def page = component.page
-        if (page.components == null)
+        if (page != null && page.components == null)
             page.components = new HashSet<>()
-        if (parent == null) {
+        if (page != null && parent == null) {
             page.components.add(component)
         }
         component.borderRadius = componentDTO.borderRadius
@@ -82,7 +80,8 @@ class ComponentServiceImpl implements ComponentService {
             }
         }
         repository.save(component)
-        sitePageRepository.save(page)
+        if (page != null)
+            sitePageRepository.save(page)
         return component
     }
 
