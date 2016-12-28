@@ -8,39 +8,32 @@
     <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/drag-and-drop.js}"></script>
-    <style>
-        .vertical-center {
-            position: inherit;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    </style>
 </head>
 <body>
     <section id="toolbar" class="row show-grid container center-block">
         <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
                 ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
-                class="col-lg-2 text-center h3 vertical-center" data-type="button">
+                class="col-lg-2 text-center h3" data-type="button">
             Кнопка
         </section>
         <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
                 ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
-                class="col-lg-3 text-center h3 vertical-center" data-type="image">
+                class="col-lg-3 text-center h3" data-type="image">
             Изображение
         </section>
         <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
                 ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
-                class="col-lg-3 text-center h3 vertical-center" data-type="panel">
+                class="col-lg-3 text-center h3" data-type="panel">
             Панель
         </section>
         <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
                 ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
-                class="col-lg-2 text-center h3 vertical-center" data-type="text">
+                class="col-lg-2 text-center h3" data-type="text">
             Текст
         </section>
         <section draggable="true" ondragstart="handleDragStart(event)" ondrag="handleDrag(event)"
                 ondrop="handleDrop(event)" ondragend="handleDragEnd(event)" ondragover="handleDragOver(event)"
-                class="col-lg-2 text-center h3 vertical-center" data-type="text_field">
+                class="col-lg-2 text-center h3" data-type="text_field">
             Поле ввода
         </section>
     </section>

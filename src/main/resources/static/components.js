@@ -1,14 +1,14 @@
 function createComponent(data) {
     switch (data.type) {
-        case BUTTON:
+        case 'BUTTON':
             return createButton(data);
-        case IMAGE:
+        case 'IMAGE':
             return createImage(data);
-        case PANEL:
+        case 'PANEL':
             return createPanel(data);
-        case TEXT:
+        case 'TEXT':
             return createText(data);
-        case TEXTFIELD:
+        case 'TEXTFIELD':
             return createTextField(data);
     }
 }
