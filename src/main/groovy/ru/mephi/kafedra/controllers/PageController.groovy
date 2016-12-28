@@ -1,11 +1,11 @@
 package ru.mephi.kafedra.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
 import ru.mephi.kafedra.dto.SitePageDTO
 import ru.mephi.kafedra.services.ComponentService
 import ru.mephi.kafedra.services.PageService
@@ -14,7 +14,7 @@ import ru.mephi.kafedra.services.PageService
  * @author nivanov
  * on 27.12.16.
  */
-@RestController
+@Controller
 @RequestMapping("/{path}")
 class PageController {
 
@@ -42,9 +42,5 @@ class PageController {
         return "edit"
     }
 
-    @GetMapping(value = "/get", produces = "application/json")
-    SitePageDTO getInfo(@PathVariable String path) {
-        List<SitePageDTO> pageDTOs = pageService.getPage(path)
-        return pageDTOs.size() > 0 ? pageDTOs.get(0) : null
-    }
+
 }

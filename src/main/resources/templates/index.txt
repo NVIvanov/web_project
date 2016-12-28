@@ -1,0 +1,171 @@
+<html>
+<head>
+	<title>Layout</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table class="main">
+<tr>
+	<td class="top" colspan="2">
+		<table class="main">
+		<tr>
+			<td><img src="house.jpg" width="285" height="165" border="0"></td>
+			<td class="logo"><img src="logo.gif" width="206" height="27" border="0"></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td class="search">
+		<form action="">
+		<table class="main">
+		<tr>
+		<form action="" method="post">
+    			<div class="row">
+       				<label for="login">Ваш логин:</label>
+        			<input type="text" class="text" name="login" id="login" />
+    			</div>
+    			<div class="row">
+        			<label for="password">Ваш пароль:</label>
+        			<input type="password" class="text" name="password" id="password" />
+    			</div>
+    			<div class="row">
+        			<input type="submit" name="submit" id="btn-submit" value="Авторизоваться" />
+    			</div>
+		</form>
+
+		</tr>
+		</table>	
+		</form>
+	</td>
+	<td class="topmenu">
+ 		<table class="main">
+		<tr>
+			<td class="menuitem"><a class="menu" href="">На главную страницу</a></td>
+			<td class="menuitem"><a class="menu" href="">Новости</a></td>
+			<td class="menuitem"><a class="menu" href="">Кафедры</a></td>
+			<td class="menuitem"><a class="menu" href="">НИЯУ МИФИ</a></td>
+			<td class="menuitem"><a class="menu" href="">Контакты</a></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td class="shadowleft"><img src="shadowleftpic.jpg" width="6" height="5" border="0"></td>
+	<td class="shadowright"><img src="shadowrightpic.jpg" width="7" height="5" border="0"></td>
+</tr>
+<tr>
+	<td class="news">
+		<table class="newstable" cellspacing="5">
+		<tr>
+			<td class="newsitem">
+			<h2 class="hdr2">Последние новости</h2>
+			Кажется мы все профукали Дюмина <a href="">>></a>
+			</td>
+		</tr>
+		</table>
+		<table class="hdrtab">
+		<tr>
+			<td class="hdr">Новости</td>
+		</tr>
+		</table>
+		<table class="newstable" cellspacing="5">
+		<tr>
+			<td class="newsitem">
+			<h2 class="hdr2">Защита приктики</h2>
+			Защита практики прошла несколько в экстравагантном стиле, некоторые были приятно удивлены в то время как другие 
+			до сих пор удивляюся несправедливости оценок( <a href="">>></a>
+			</td>
+		</tr>
+		<tr>
+			<td class="newsitem">
+			<h2 class="hdr2">Сдача Овчаренко</h2>
+			Мы далеко не последние не доделали веб-проект до совоего логического завершения,
+			т.ч. есть шанс получить хотя бы четверки. <a href="">>></a>
+			</td>
+		</tr>
+		<tr>
+			<td class="newsitem">
+			<h2 class="hdr2">С наступающими праздниками!)</h2>
+			У меня закончились идеи, что писать! <a href="">>></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+	<td class="text">
+		<table class="form">
+		<tr>
+			<td class="formtext">Информацию о какой кафедре  вы хотите найти::</td>
+			<td class="forminput"><select class="input"><option value="">Компьютерные системы и технологии</select></td>
+			
+		</tr>
+		
+		</table>
+		<table class="hdrtab">
+		<tr>
+			<td><img src="hdrtabpic.jpg" width="7" height="37" border="0"></td>
+			<td class="hdr" width="100%">Кафедры:</td>
+		</tr>
+		</table>
+		<table class="content">
+		<tr>
+			<td class="newsitem image"><img class="border" src="logo2.gif" width="136" height="105" border="0"></td>
+			<td class="newsitem">
+			<h2 class="hdr2">Компьютерные системы и технологии</h2>
+			Кафедра "Компьютерные системы и технологии" (КСиТ) готовит бакалавров и магистров по направлениям 09.03.01 и 09.04.01 "Информатика и вычислительная техника". 
+			Студенты изучают перспективную компьютерную схемо- и системотехнику, современные языки и технологии программирования,
+			 осваивают новейшие прикладные программные продукты ведущих фирм мира.  <a href="">>></a>
+			</td>
+		</tr>
+		<tr>
+			<td class="newsitem image"><img class="border" src="logo-m.png" width="135" height="94" border="0"></td>
+			<td class="newsitem">
+			<h2 class="hdr2">Информационные системы и технологии</h2>
+			Кафедра готовит бакалавров по направлению «Информационные системы и технологии» (09.03.02), специализация «Математическое, программное и 
+			аппаратное обеспечение информационных систем».
+			Также проводится набор магистров по направлению «Информационные системы и технологии» (09.04.02), 
+			магистерская программа «Высокотехнологичные информационные системы». <a href="">>></a>
+			</td>
+		</tr>
+		<tr>
+			<td class="newsitem image"><img class="border" src="Keys3.png" width="135" height="88" border="0"></td>
+			<td class="newsitem">
+			<h2 class="hdr2">Криптология и кибербезопасность</h2>
+			Наши сотрудники — ведущие эксперты в области фундаментальной и прикладной криптологии, представляющие
+			 кафедру на всероссийских и международных научных конференциях. Наши студенты, аспиранты и
+			 выпускники — высококвалифицированные специалисты, сотрудники государственных и передовых 
+			коммерческих компаний, специализирующихся на защите информации. <a href="">>></a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td class="copyright">
+ 		<table class="main">
+		<tr>
+			<td class="cprghtitem">ИЧЧС © ИвановЧкадуаЧерепановСидорова.com</td>
+		</tr>
+		</table>
+	</td>
+	<td class="bottommenu">
+ 		<table class="main">
+		<tr>
+			<td class="btmenuitem">
+				<a class="menu" href="">На главную страницу</a>
+				<img src="dots2.gif" width="5" height="5" vspace="1" hspace="12">
+				<a class="menu" href="">Новости</a>
+				<img src="dots2.gif" width="5" height="5" vspace="1" hspace="12">
+				<a class="menu" href="">Кафедры</a>
+				<img src="dots2.gif" width="5" height="5" vspace="1" hspace="12">
+				<a class="menu" href="">НИЯУ МИФИ</a>
+				<img src="dots2.gif" width="5" height="5" vspace="1" hspace="12">
+				<a class="menu" href="">Контакты</a>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</body>
+</html>
