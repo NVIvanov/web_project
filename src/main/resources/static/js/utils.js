@@ -45,6 +45,7 @@ function sendComponents(element) {
     for (var i = 0; i < element.childElementCount; i++) {
         json[i] = convertComponentToJson(element.children[i], true);
     }
+
     $.ajax({
         type: 'POST',
         url: '/components/',
@@ -54,7 +55,6 @@ function sendComponents(element) {
 }
 
 function setAttributesForEditing(component, type) {
-    console.log(typeof component);
     component.attr('style', component.attr('style') + '; border: dashed 1px');
     component.attr('ondragstart', 'handleDragStartInEditor(event)');
     component.attr('ondrag', 'handleDrag(event)');
@@ -78,11 +78,11 @@ function convertComponentToJson(component, isRoot) {
     componentJson['fontFamily'] = component.style.fontFamily;
     componentJson['colorHex'] = component.style.color;
     var type = component.getAttribute('data-type');
-    componentJson['type'] = type.toUpperCase();
-    if (type == 'button' || type == 'text') {
+    componentJson['type'] = type;
+    if (type == 'BUTTON' || type == 'TEXT') {
         componentJson['text'] = component.innerHTML;
     }
-    if (type == 'image') {
+    if (type == 'IMAGE') {
         componentJson['src'] = component.src;
     }
     var attributes = component.attributes;
@@ -121,7 +121,6 @@ function createComponent(data) {
         case 'TEXTFIELD':
             component = createTextField(data);
     }
-    console.log(typeof component);
     setAttributesForEditing(component, data['type']);
     return component;
 }
