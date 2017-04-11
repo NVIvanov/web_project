@@ -23,4 +23,9 @@ class MainController {
     def login() {
         return "login"
     }
+
+    @GetMapping("/auth")
+    def signUp() {
+        return "auth"
+    }
 }
