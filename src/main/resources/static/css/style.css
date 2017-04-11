@@ -25,7 +25,7 @@ table.main {
 }
 
 td.top {
-    background-image: url(top_bg.jpg);
+    background-image: url(../img/top_bg.jpg);
     height: 165px;
 }
 

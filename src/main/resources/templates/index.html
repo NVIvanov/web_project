@@ -3,7 +3,7 @@
 <meta charset="utf-8"/>
 <head>
 	<title>Layout</title>
-	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <table class="main">
@@ -36,7 +36,7 @@
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						</form>
-						<form th:action="@{/sign_up}" method="post" th:object="${userDTO}">
+						<form th:action="@{/sign_up}" method="post" th:object="${userVO}">
 							<div class="row">
 								<label for="name">Ваше имя:</label>
 								<input type="text" class="text" name="login" id="name" th:field="*{name}"/>
@@ -133,7 +133,8 @@
 			</table>
 			<table class="content">
 				<tr>
-					<td class="newsitem image"><img class="border" src="logo2.gif" width="136" height="105" border="0"/>
+					<td class="newsitem image"><img class="border" src="../static/img/logo2.gif" width="136"
+													height="105" border="0"/>
 					</td>
 					<td class="newsitem">
 						<h2 class="hdr2">Компьютерные системы и технологии</h2>
@@ -145,7 +146,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="newsitem image"><img class="border" src="logo-m.png" width="135" height="94" border="0"/>
+					<td class="newsitem image"><img class="border" src="../static/img/logo-m.png" width="135"
+													height="94" border="0"/>
 					</td>
 					<td class="newsitem">
 						<h2 class="hdr2">Информационные системы и технологии</h2>
@@ -158,7 +160,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="newsitem image"><img class="border" src="Keys3.png" width="135" height="88" border="0"/>
+					<td class="newsitem image"><img class="border" src="../static/img/Keys3.png" width="135" height="88"
+													border="0"/>
 					</td>
 					<td class="newsitem">
 						<h2 class="hdr2">Криптология и кибербезопасность</h2>
