@@ -41,6 +41,7 @@ class PageServiceImpl implements PageService {
                 .map { model ->
             def dto = new SitePageDTO()
             dto.relativePath = model.relativePath
+            dto.id = model.id
             if (model.children != null)
                 dto.children = model.children.stream().map { child ->
                     return child.id

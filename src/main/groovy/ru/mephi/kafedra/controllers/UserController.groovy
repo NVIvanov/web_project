@@ -2,6 +2,7 @@ package ru.mephi.kafedra.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.mephi.kafedra.dto.UserDTO
@@ -21,7 +22,7 @@ class UserController {
     UserService userService
 
     @PostMapping("/")
-    void createUser(@Valid UserDTO userDTO) {
+    void createUser(@RequestBody @Valid UserDTO userDTO) {
         userService.createUser(userDTO)
     }
 }

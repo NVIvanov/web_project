@@ -10,5 +10,7 @@ import ru.mephi.kafedra.dto.AttachmentDTO
 interface AttachmentService {
     AttachmentDTO createAttachment(MultipartFile file)
 
-    List<AttachmentDTO> getAttachmentsForCurrentUser()
+    void createUserFolder()
+
+    List<AttachmentDTO> getForCurrentUser()
 }

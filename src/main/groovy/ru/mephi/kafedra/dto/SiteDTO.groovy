@@ -5,5 +5,5 @@ package ru.mephi.kafedra.dto
  * on 27.12.16.
  */
 class SiteDTO {
-    String relativePath, owner, mainPage
+    String id, relativePath, owner, mainPage
 }
