@@ -1,6 +1,7 @@
 package ru.mephi.kafedra.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -13,7 +14,7 @@ import ru.mephi.kafedra.services.AttachmentService
  * on 28.12.16.
  */
 //@RestController("/user/files")
-
+@Controller
 class AttachmentController {
 
     @Autowired
