@@ -1,73 +1,83 @@
 function createComponent(data) {
     switch (data.type) {
         case 'BUTTON':
-            return createButton(data);
+            return button(data);
         case 'IMAGE':
-            return createImage(data);
+            return image(data);
         case 'PANEL':
-            return createPanel(data);
+            return panel(data);
         case 'TEXT':
-            return createText(data);
+            return text(data);
         case 'TEXTFIELD':
-            return createTextField(data);
+            return textField(data);
     }
 }
 
-function createButton(data) {
-    var button = $('<button>' + data['text'] + '</button>');
-    button.setParameter('id', data['id']);
-    var style = createStyleString(data);
-    if (!style.empty()) button.setAttribute('style', style);
-    var listeners = createJsEventListeners(data);
-    for (var event in listeners) {
+function button(data) {
+    const button = <button id={data.id}>{data.text}</button>;
+
+    const styleString = createStyleString(data);
+    if (!styleString.empty()) button.setAttribute('style', styleString);
+
+    const listeners = createJsEventListeners(data);
+    for (let event in listeners) {
         if (listeners.hasOwnProperty(event)) {
             button.setAttribute(event, listeners[event]);
         }
     }
+
     return button;
 }
 
-function createImage(data) {
-    var image = $('<img src="' + data.src + '">');
-    image.setAttribute('id', data['id']);
-    var style = createStyleString(data);
+function image(data) {
+    const image = <img src={data.src}/>;
+
+    const style = createStyleString(data);
     if (!style.empty()) image.setAttribute('style', style);
-    var listeners = createJsEventListeners(data);
-    for (var event in listeners) {
+
+    const listeners = createJsEventListeners(data);
+    for (let event in listeners) {
         if (listeners.hasOwnProperty(event)) {
             image.setAttribute(event, listeners[event]);
         }
     }
+
     return image;
 }
 
-function createPanel(data) {
-    var panel = $('<section></section>');
-    var style = createStyleString(data);
+function panel(data) {
+    const panel = <section/>;
+
+    const style = createStyleString(data);
     if (!style.empty()) panel.setAttribute('style', style);
-    var children = createChildren(data);
-    for (var i = 0; i < children.length; i++) {
+
+    const children = createChildren(data);
+    for (let i = 0; i < children.length; i++) {
         panel.appendChild(children[i]);
     }
     return panel;
 }
 
-function createText(data) {
-    var paragraph = $('<p>' + data['text'] + '</p>');
-    var style = createStyleString(data);
+function text(data) {
+    const paragraph = <p>{data['text']}</p>;
+
+    const style = createStyleString(data);
     if (!style.empty()) paragraph.setAttribute('style', style);
+
     return paragraph;
 }
 
-function createTextField(data) {
-    var field = $('<input type="text"/>');
-    var style = createStyleString(data);
+function textField(data) {
+    const field = <input type="text"/>;
+
+    const style = createStyleString(data);
     if (!style.empty()) field.setAttribute('style', style);
+
     return field;
 }
 
 function createStyleString(data) {
-    var style = '';
+    let style = '';
     if (data['width'] != null) {
         style += 'width: ' + data['width'];
     }
@@ -103,8 +113,8 @@ function createStyleString(data) {
 }
 
 function createJsEventListeners(data) {
-    var listeners = {};
-    for (var listener in data['jsEventListeners']) {
+    let listeners = {};
+    for (let listener in data['jsEventListeners']) {
         if (data['jsEventListeners'].hasOwnProperty(listener)) {
             listeners[listener['event']] = listener['js'];
         }
@@ -113,8 +123,8 @@ function createJsEventListeners(data) {
 }
 
 function createChildren(data) {
-    var children = [];
-    for (var child in data['children']) {
+    let children = [];
+    for (let child in data['children']) {
         if (data['children'].hasOwnProperty(child)) {
             children += createComponent(child);
         }
