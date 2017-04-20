@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Service
+import ru.mephi.kafedra.domain.DomainException
 import ru.mephi.kafedra.domain.data.entities.SystemUser
 import ru.mephi.kafedra.domain.data.repositories.UserRepository
 import ru.mephi.kafedra.domain.services.UserService
@@ -24,7 +25,7 @@ class UserServiceImpl implements UserService {
     @Override
     void registerUser(@NotNull SystemUser user) {
         if (userExists(user.username))
-            throw new IllegalStateException("User with such username already exists")
+            throw new DomainException(400, "User with such username already exists")
         repository.save(user)
     }
 
@@ -43,9 +44,9 @@ class UserServiceImpl implements UserService {
     @Override
     void updateUser(@NotNull SystemUser userToUpdate) {
         if (!userExists(userToUpdate.username))
-            throw new IllegalArgumentException("User with such username is not exist")
+            throw new DomainException(404, "failure.user.not.found")
         if (!permitOperationToCurrentLoggedUser(userToUpdate.username))
-            throw new IllegalStateException("Operation not allowed")
+            throw new DomainException(403, "Operation not allowed")
         repository.save(userToUpdate)
     }
 
