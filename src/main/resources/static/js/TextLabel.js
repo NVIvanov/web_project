@@ -1,28 +1,30 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import {DragSource} from 'react-dnd';
-import {ComponentTypes} from './editor_components';
+import {ComponentTypes} from './ComponentTypes';
 
-export class TextLabel extends Component {
-    constructor(props) {
-        super(props);
-        this.type = ComponentTypes.TEXT;
-    }
-
+class TextLabel extends Component {
     render() {
-        return <section className="col-lg-2 text-center h3">Текст</section>
+        const { connectDragSource } = this.props;
+        return connectDragSource(<section className={"col-lg-2 text-center h3"}>Текст</section>);
     }
 }
 
 const source = {
     beginDrag(props) {
         return {
-            componentId: props.type
+            componentId: ComponentTypes.TEXT
         }
     }
 };
 
 function collect(connect, monitor) {
-    return {};
+    return {
+        connectDragSource: connect.dragSource()
+    };
 }
+
+TextLabel.propTypes = {
+    connectDragSource: PropTypes.func.isRequired
+};
 
 export default DragSource(ComponentTypes.TEXT, source, collect)(TextLabel);

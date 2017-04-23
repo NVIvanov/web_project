@@ -1,6 +1,13 @@
-import { Button, Image, Panel, Text, TextField } from './editor_components.js';
+import React, { Component } from 'react';
+import Editor from './Editor';
+import Button from './Button';
+import Image from './Image';
+import Panel from './Panel';
+import Text from './Text';
+import TextField from './TextField';
+import {ComponentTypes} from "./ComponentTypes";
 
-let inc = 0;
+export let inc = 0;
 
 function handleDragStart(event) {
     event.stopPropagation();
@@ -55,18 +62,18 @@ function handleDrop(event) {
     return false;
 }
 
-function createNewComponent(type) {
+export function createNewComponent(type, key) {
     switch (type) {
-        case 'BUTTON':
-            return <Button/>;
-        case 'IMAGE':
-            return <Image/>;
-        case 'PANEL':
-            return <Panel/>;
-        case 'TEXT':
-            return <Text/>;
-        case 'TEXTFIELD':
-            return <TextField/>;
+        case ComponentTypes.BUTTON:
+            return <Button text="Кнопка" key={key}/>;
+        case ComponentTypes.IMAGE:
+            return <Image key={key}/>;
+        case ComponentTypes.PANEL:
+            return <Panel key={key}/>;
+        case ComponentTypes.TEXT:
+            return <Text key={key}/>;
+        case ComponentTypes.TEXTFIELD:
+            return <TextField key={key}/>;
     }
 }
 

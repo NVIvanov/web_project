@@ -1,17 +1,18 @@
 import React, { Component, PropTypes } from 'react';
-import {DragSource} from 'react-dnd';
 import {ComponentTypes} from './ComponentTypes';
+import {DragSource} from 'react-dnd';
 
-class ButtonLabel extends Component {
+export class TextField extends Component {
     render() {
-        return this.props.connectDragSource(<section className={"col-lg-2 text-center h3"}>Кнопка</section>);
+        const style = {border: 'dashed 1px'};
+        return <input type="text" style={style} key={this.props.key}/>;
     }
 }
 
 const source = {
     beginDrag(props) {
         return {
-            componentId: ComponentTypes.BUTTON
+            componentId: ComponentTypes.TEXTFIELD
         }
     }
 };
@@ -22,8 +23,8 @@ function collect(connect, monitor) {
     }
 }
 
-ButtonLabel.propTypes = {
+TextField.propTypes = {
     connectDragSource: PropTypes.func.isRequired
 };
 
-export default DragSource(ComponentTypes.BUTTON, source, collect)(ButtonLabel);
+export default DragSource(ComponentTypes.TEXTFIELD, source, collect)(TextField);
