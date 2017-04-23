@@ -6,6 +6,7 @@ import ru.mephi.kafedra.domain.data.entities.SystemUser
 import ru.mephi.kafedra.domain.services.UserService
 import ru.mephi.kafedra.web.dto.UserDTO
 import ru.mephi.kafedra.web.facades.UserFacade
+import ru.mephi.kafedra.web.vo.UserVO
 
 import javax.validation.constraints.NotNull
 
@@ -21,12 +22,18 @@ class UserFacadeImpl implements UserFacade {
     UserService userService
 
     @Override
-    void createUser(@NotNull UserDTO userDTO) {
+    void createUser(@NotNull UserVO userDTO) {
         SystemUser user = new SystemUser()
+        UserDTO dto = userDTO.userDTO
         user.username = userDTO.username
         user.password = userDTO.password
         user.name = userDTO.name
         user.department = userDTO.department
         userService.registerUser(user)
+    }
+
+    @Override
+    UserVO updateUser(@NotNull UserVO userVO) {
+        return null
     }
 }

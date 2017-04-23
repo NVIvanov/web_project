@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-04-11.18:04:42.401</IntrospectionTimestamp>
-      <IntrospectionStateNumber>4878</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-04-23.21:57:35.324</IntrospectionTimestamp>
+      <IntrospectionStateNumber>5074</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -29,43 +29,256 @@
     <schema id="8" parent="2" name="information_schema">
       <ObjectId>12349</ObjectId>
     </schema>
-    <table id="9" parent="3" name="system_user">
-      <ObjectId>34612</ObjectId>
-      <StateNumber>4878</StateNumber>
+    <sequence id="9" parent="3" name="attachment_id_seq">
+      <ObjectId>35006</ObjectId>
+      <StateNumber>5065</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="10" parent="3" name="site_id_seq">
+      <ObjectId>35017</ObjectId>
+      <StateNumber>5066</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="11" parent="3" name="site_manager_id_seq">
+      <ObjectId>35028</ObjectId>
+      <StateNumber>5067</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="12" parent="3" name="attachment">
+      <ObjectId>35008</ObjectId>
+      <StateNumber>5072</StateNumber>
     </table>
-    <column id="10" parent="9" name="username">
+    <table id="13" parent="3" name="site">
+      <ObjectId>35019</ObjectId>
+      <StateNumber>5073</StateNumber>
+    </table>
+    <table id="14" parent="3" name="site_manager">
+      <ObjectId>35030</ObjectId>
+      <StateNumber>5074</StateNumber>
+    </table>
+    <table id="15" parent="3" name="system_user">
+      <ObjectId>35036</ObjectId>
+      <StateNumber>5074</StateNumber>
+    </table>
+    <column id="16" parent="12" name="id">
       <Position>1</Position>
-      <DataType>varchar(100)|0</DataType>
+      <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>4878</StateNumber>
+      <StateNumber>5065</StateNumber>
+      <SequenceName>attachment_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;attachment_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="11" parent="9" name="department">
+    <column id="17" parent="12" name="description">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <StateNumber>4878</StateNumber>
+      <DataType>varchar(2000)|0</DataType>
+      <StateNumber>5065</StateNumber>
     </column>
-    <column id="12" parent="9" name="name">
+    <column id="18" parent="12" name="filename">
       <Position>3</Position>
-      <DataType>varchar(200)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>4878</StateNumber>
+      <StateNumber>5065</StateNumber>
     </column>
-    <column id="13" parent="9" name="password">
+    <column id="19" parent="12" name="title">
       <Position>4</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>4878</StateNumber>
+      <StateNumber>5065</StateNumber>
     </column>
-    <index id="14" parent="9" name="system_user_pkey">
-      <ObjectId>34618</ObjectId>
+    <column id="20" parent="12" name="author_username">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5065</StateNumber>
+    </column>
+    <column id="21" parent="12" name="placement_id">
+      <Position>6</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5065</StateNumber>
+    </column>
+    <index id="22" parent="12" name="attachment_pkey">
+      <ObjectId>35015</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="23" parent="12" name="attachment_pkey">
+      <ObjectId>35016</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>attachment_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="24" parent="12" name="fk9mr4igyywaa59fu76bo6pf37e">
+      <ObjectId>35048</ObjectId>
+      <ColNames>author_username</ColNames>
+      <RefTableName>system_user</RefTableName>
+      <RefKeyName>system_user_pkey</RefKeyName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <foreign-key id="25" parent="12" name="fkmb0ucdogivwm8yj1d8570o2xb">
+      <ObjectId>35053</ObjectId>
+      <ColNames>placement_id</ColNames>
+      <RefTableName>site</RefTableName>
+      <RefKeyName>site_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="26" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5066</StateNumber>
+      <SequenceName>site_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;site_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="27" parent="13" name="description">
+      <Position>2</Position>
+      <DataType>varchar(3000)|0</DataType>
+      <StateNumber>5066</StateNumber>
+    </column>
+    <column id="28" parent="13" name="relative_path">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5066</StateNumber>
+    </column>
+    <column id="29" parent="13" name="title">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5066</StateNumber>
+    </column>
+    <index id="30" parent="13" name="site_pkey">
+      <ObjectId>35026</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="31" parent="13" name="ukikyhqpf8p5bsjyqxqg9i3n8lp">
+      <ObjectId>35044</ObjectId>
+      <ColNames>relative_path</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="32" parent="13" name="site_pkey">
+      <ObjectId>35027</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>site_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="33" parent="13" name="ukikyhqpf8p5bsjyqxqg9i3n8lp">
+      <ObjectId>35045</ObjectId>
+      <ColNames>relative_path</ColNames>
+      <UnderlyingIndexName>ukikyhqpf8p5bsjyqxqg9i3n8lp</UnderlyingIndexName>
+    </key>
+    <column id="34" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5067</StateNumber>
+      <SequenceName>site_manager_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;site_manager_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="35" parent="14" name="role">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5067</StateNumber>
+    </column>
+    <column id="36" parent="14" name="site_id">
+      <Position>3</Position>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5067</StateNumber>
+    </column>
+    <column id="37" parent="14" name="user_username">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5067</StateNumber>
+    </column>
+    <index id="38" parent="14" name="site_manager_pkey">
+      <ObjectId>35034</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="14" name="site_manager_pkey">
+      <ObjectId>35035</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>site_manager_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="40" parent="14" name="fkhmg13c2o6fq7enpcaim1hsr60">
+      <ObjectId>35058</ObjectId>
+      <ColNames>site_id</ColNames>
+      <RefTableName>site</RefTableName>
+      <RefKeyName>site_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="41" parent="14" name="fkoc39gy1ipaapk36nnh3m7siyb">
+      <ObjectId>35063</ObjectId>
+      <ColNames>user_username</ColNames>
+      <RefTableName>system_user</RefTableName>
+      <RefKeyName>system_user_pkey</RefKeyName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="42" parent="15" name="username">
+      <Position>1</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <column id="43" parent="15" name="admin">
+      <Position>2</Position>
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <column id="44" parent="15" name="department">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <column id="45" parent="15" name="email">
+      <Position>4</Position>
+      <DataType>varchar(100)|0</DataType>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <column id="46" parent="15" name="enabled">
+      <Position>5</Position>
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <column id="47" parent="15" name="name">
+      <Position>6</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <column id="48" parent="15" name="password">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5068</StateNumber>
+    </column>
+    <index id="49" parent="15" name="system_user_pkey">
+      <ObjectId>35042</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="15" parent="9" name="system_user_pkey">
-      <ObjectId>34619</ObjectId>
+    <index id="50" parent="15" name="uk3ypdb9457wfdya51dfk3ul642">
+      <ObjectId>35046</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="15" name="system_user_pkey">
+      <ObjectId>35043</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>system_user_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+    </key>
+    <key id="52" parent="15" name="uk3ypdb9457wfdya51dfk3ul642">
+      <ObjectId>35047</ObjectId>
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>uk3ypdb9457wfdya51dfk3ul642</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
