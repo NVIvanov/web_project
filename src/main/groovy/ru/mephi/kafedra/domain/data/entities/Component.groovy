@@ -24,6 +24,18 @@ class Component {
     Component parentComponent
 
     @NotNull
+    @OneToMany
+    Set<JsEventListener> jsEventListeners
+
+    @NotNull
+    @OneToMany
+    Set<Attribute> attributes
+
+
+    @ManyToOne
+    Page placement
+
+    @NotNull
     Type type
 
     enum Type {

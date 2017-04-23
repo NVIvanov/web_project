@@ -58,14 +58,12 @@ class UserServiceImpl implements UserService {
 
     @Override
     boolean permitOperationToCurrentLoggedUser(@NotNull String candidate) {
-        String currentUsername = currentLoggedUsername()
-        return currentUsername == candidate || currentUsername == "ADMIN"
+        SystemUser user = currentLoggedUser()
+        return user.username == candidate || user.admin
     }
 
-    private static String currentLoggedUsername() {
+    SystemUser currentLoggedUser() {
         User principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal() as User
-        boolean isAdmin = principal.authorities.stream()
-                .anyMatch { authority -> authority.authority == "ADMIN" }
-        return isAdmin ? "ADMIN" : principal.username
+        return findUser(principal.username).get()
     }
 }

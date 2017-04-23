@@ -35,14 +35,6 @@ class Page {
     @ManyToOne
     Site site
 
-    @NotNull
-    @OneToMany
-    Set<JsEventListener> jsEventListeners
-
-    @NotNull
-    @OneToMany
-    Set<Attribute> attributes
-
     @OneToOne
     @NotNull
     Component rootComponent

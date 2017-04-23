@@ -20,4 +20,6 @@ interface UserService {
     void deleteUser(@NotNull String username)
 
     boolean permitOperationToCurrentLoggedUser(@NotNull String candidate)
+
+    SystemUser currentLoggedUser()
 }
