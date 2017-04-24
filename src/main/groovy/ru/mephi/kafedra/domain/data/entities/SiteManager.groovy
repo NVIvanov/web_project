@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull
  */
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = ['site_id', 'role']))
 class SiteManager {
 
     @Id

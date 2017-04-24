@@ -28,4 +28,12 @@ class Site {
     @Size(min = 1, max = 30)
     @Column(name = "relative_path")
     String relativePath
+
+    @NotNull
+    @OneToMany
+    Set<Page> pages
+
+    @NotNull
+    @OneToMany
+    Set<SiteManager> managers
 }

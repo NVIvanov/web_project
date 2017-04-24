@@ -17,5 +17,6 @@ import javax.validation.constraints.NotNull
 interface SiteManagerRepository extends CrudRepository<SiteManager, Long> {
     Set<SiteManager> findBySite(@NotNull Site site)
 
+    Optional<SiteManager> findByUserAndSite(@NotNull SystemUser user, @NotNull Site site)
     Set<SiteManager> findByUser(@NotNull SystemUser user)
 }

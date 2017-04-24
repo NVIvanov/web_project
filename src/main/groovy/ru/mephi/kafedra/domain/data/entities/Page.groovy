@@ -32,6 +32,9 @@ class Page {
     @ManyToOne
     Page parentPage
 
+    @OneToMany
+    Set<Page> children
+
     @ManyToOne
     Site site
 

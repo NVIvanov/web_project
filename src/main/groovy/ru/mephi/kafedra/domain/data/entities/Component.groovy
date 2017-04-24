@@ -20,8 +20,8 @@ class Component {
     @Size(min = 1, max = 100)
     String title
 
-    @ManyToOne
-    Component parentComponent
+    @OneToMany
+    Set<Component> children
 
     @NotNull
     @OneToMany
