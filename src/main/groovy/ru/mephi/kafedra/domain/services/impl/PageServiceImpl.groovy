@@ -50,6 +50,11 @@ class PageServiceImpl implements PageService {
     }
 
     @Override
+    Optional<Page> getPageById(@NotNull Long id) {
+        Optional.ofNullable(pageRepository.findOne(id))
+    }
+
+    @Override
     Page updatePage(@NotNull Page pageToUpdate) {
         pageRepository.save(pageToUpdate)
         return pageToUpdate

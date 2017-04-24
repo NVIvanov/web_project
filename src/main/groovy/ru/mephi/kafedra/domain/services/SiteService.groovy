@@ -12,18 +12,18 @@ import javax.validation.constraints.NotNull
 
 interface SiteService {
     void createSite(@NotNull Site site)
-
     Optional<Site> getSiteById(@NotNull Long id)
 
+    Optional<Site> getSiteByRelativePath(@NotNull String relativePath)
     @NotNull
     Set<Site> getSitesForCurrentUser()
-
     @NotNull
     Site updateSite(@NotNull Site siteToUpdate)
 
+    @NotNull
+    Role getCurrentUserRoleInSite(@NotNull Site site)
+
     void deleteSite(@NotNull Long id)
-
     void grantRole(@NotNull Long siteId, @NotNull String user, @NotNull Role role)
-
     void revokeRole(@NotNull Long siteId, @NotNull String user)
 }

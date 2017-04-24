@@ -19,6 +19,9 @@ interface PageService {
     Optional<Page> getPageByPath(@NotNull String path)
 
     @NotNull
+    Optional<Page> getPageById(@NotNull Long id)
+
+    @NotNull
     Page updatePage(@NotNull Page pageToUpdate)
 
     void deletePage(Long id)

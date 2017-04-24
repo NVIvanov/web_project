@@ -48,13 +48,18 @@ class SiteServiceImpl implements SiteService {
 
     @Override
     Optional<Site> getSiteById(@NotNull Long id) {
-        return Optional.ofNullable(siteRepository.findOne(id))
+        Optional.ofNullable(siteRepository.findOne(id))
+    }
+
+    @Override
+    Optional<Site> getSiteByRelativePath(@NotNull String relativePath) {
+        siteRepository.findByRelativePath(relativePath)
     }
 
     @Override
     Set<Site> getSitesForCurrentUser() {
         SystemUser currentUser = userService.currentLoggedUser()
-        return siteManagerRepository.findByUser(currentUser).stream()
+        siteManagerRepository.findByUser(currentUser).stream()
                 .map { manager -> manager.getSite() }
                 .collect(toList())
     }
@@ -68,7 +73,15 @@ class SiteServiceImpl implements SiteService {
             throw new DomainException(400, "site.not.exist")
         }
         siteRepository.save(siteToUpdate)
-        return siteToUpdate
+        siteToUpdate
+    }
+
+    @Override
+    SiteManager.Role getCurrentUserRoleInSite(@NotNull Site site) {
+        Optional<SiteManager> siteManagerOptional =
+                siteManagerRepository.findByUserAndSite(userService.currentLoggedUser(), site)
+        SiteManager manager = siteManagerOptional.orElseThrow { new DomainException(403, "user.has.not.rights") }
+        manager.role
     }
 
     @Override

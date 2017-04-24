@@ -1,6 +1,6 @@
 package ru.mephi.kafedra.web.facades
 
-import ru.mephi.kafedra.web.vo.UserVO
+import ru.mephi.kafedra.web.dto.UserDTO
 
 import javax.validation.constraints.NotNull
 
@@ -9,7 +9,9 @@ import javax.validation.constraints.NotNull
  * on 11.04.17.
  */
 interface UserFacade {
-    void createUser(@NotNull UserVO userDTO)
+    void createUser(@NotNull UserDTO userDTO)
 
-    UserVO updateUser(@NotNull UserVO userVO)
+    UserDTO updateUser(@NotNull UserDTO userVO)
+
+    void deleteUser(@NotNull String username)
 }

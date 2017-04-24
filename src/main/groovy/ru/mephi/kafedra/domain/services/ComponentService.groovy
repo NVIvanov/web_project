@@ -8,11 +8,13 @@ import javax.validation.constraints.NotNull
  * @author nivanov
  * on 24.04.17.
  */
-interface ComonentService {
+interface ComponentService {
     void createComponent(@NotNull Component component)
 
     @NotNull
     Component getRootComponent(@NotNull String relativePath)
+
+    Optional<Component> getComponentById(@NotNull Long id)
 
     void deleteComponent(@NotNull Long id)
 }

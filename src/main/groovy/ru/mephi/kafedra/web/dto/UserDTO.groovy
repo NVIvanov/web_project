@@ -22,4 +22,7 @@ class UserDTO {
     @NotNull
     @Size(min = 1, max = 200)
     String name
+
+    @Size(max = 100)
+    String email
 }

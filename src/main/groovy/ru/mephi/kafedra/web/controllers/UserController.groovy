@@ -2,8 +2,8 @@ package ru.mephi.kafedra.web.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+import ru.mephi.kafedra.web.dto.UserDTO
 import ru.mephi.kafedra.web.facades.UserFacade
-import ru.mephi.kafedra.web.vo.UserVO
 
 import javax.validation.Valid
 
@@ -20,12 +20,17 @@ class UserController {
     UserFacade userFacade
 
     @PostMapping
-    void createUser(@RequestBody @Valid UserVO userVO) {
+    def createUser(@RequestBody @Valid UserDTO userVO) {
         userFacade.createUser(userVO)
     }
 
     @PutMapping
-    UserVO updateUser(@RequestBody @Valid UserVO userVO) {
+    def updateUser(@RequestBody @Valid UserDTO userVO) {
         return userFacade.updateUser(userVO)
+    }
+
+    @DeleteMapping
+    def deleteUser(@RequestParam String username) {
+        return userFacade.deleteUser(username)
     }
 }
