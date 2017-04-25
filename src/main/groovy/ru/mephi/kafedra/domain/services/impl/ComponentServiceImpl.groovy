@@ -3,9 +3,13 @@ package ru.mephi.kafedra.domain.services.impl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import ru.mephi.kafedra.domain.DomainException
+import ru.mephi.kafedra.domain.data.entities.Attribute
 import ru.mephi.kafedra.domain.data.entities.Component
+import ru.mephi.kafedra.domain.data.entities.JsEventListener
 import ru.mephi.kafedra.domain.data.entities.Page
+import ru.mephi.kafedra.domain.data.repositories.AttributeRepository
 import ru.mephi.kafedra.domain.data.repositories.ComponentRepository
+import ru.mephi.kafedra.domain.data.repositories.JsEventListenersRepository
 import ru.mephi.kafedra.domain.services.ComponentService
 import ru.mephi.kafedra.domain.services.PageService
 
@@ -25,8 +29,16 @@ class ComponentServiceImpl implements ComponentService {
     @Autowired
     PageService pageService
 
+    @Autowired
+    JsEventListenersRepository jsEventListenersRepository
+
+    @Autowired
+    AttributeRepository attributeRepository
+
     @Override
     void createComponent(@NotNull Component component) {
+        if (component.id != null)
+            deleteComponent(component.id)
         component.id = null
         componentRepository.save(component)
     }
@@ -45,6 +57,21 @@ class ComponentServiceImpl implements ComponentService {
 
     @Override
     void deleteComponent(@NotNull Long id) {
+        Optional<Component> componentOpt = getComponentById(id)
+        Component component = componentOpt.orElseThrow { new DomainException(404, 'component.not.found') }
+        component.children.forEach { child -> deleteComponent(child.id) }
+        jsEventListenersRepository.delete(component.jsEventListeners)
+        attributeRepository.delete(component.attributes)
         componentRepository.delete(id)
+    }
+
+    @Override
+    void createAttribute(@NotNull Attribute attribute) {
+        attributeRepository.save(attribute)
+    }
+
+    @Override
+    void createJsEventListeners(@NotNull JsEventListener eventListener) {
+        jsEventListenersRepository.save(eventListener)
     }
 }

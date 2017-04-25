@@ -1,6 +1,8 @@
 package ru.mephi.kafedra.domain.services
 
+import ru.mephi.kafedra.domain.data.entities.Attribute
 import ru.mephi.kafedra.domain.data.entities.Component
+import ru.mephi.kafedra.domain.data.entities.JsEventListener
 
 import javax.validation.constraints.NotNull
 
@@ -17,4 +19,8 @@ interface ComponentService {
     Optional<Component> getComponentById(@NotNull Long id)
 
     void deleteComponent(@NotNull Long id)
+
+    void createAttribute(@NotNull Attribute attribute)
+
+    void createJsEventListeners(@NotNull JsEventListener eventListener)
 }

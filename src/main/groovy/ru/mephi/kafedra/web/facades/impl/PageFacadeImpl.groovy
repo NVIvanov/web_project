@@ -32,7 +32,7 @@ class PageFacadeImpl implements PageFacade {
 
     @Override
     def getPage(@NotNull Long id) {
-        pageService.getPageById(id).orElseThrow { new DomainException(404, 'page.not.found') }
+        pageConverter.convert(pageService.getPageById(id).orElseThrow { new DomainException(404, 'page.not.found') })
     }
 
     @Override

@@ -3,7 +3,7 @@ package ru.mephi.kafedra.web.controllers
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import ru.mephi.kafedra.web.vo.UserVO
+import ru.mephi.kafedra.web.dto.UserDTO
 
 /**
  * @author nivanov
@@ -15,7 +15,7 @@ class MainController {
 
     @GetMapping("/")
     def index(Model model) {
-        model.addAttribute("userVO", new UserVO())
+        model.addAttribute("userDTO", new UserDTO())
         return "index"
     }
 
